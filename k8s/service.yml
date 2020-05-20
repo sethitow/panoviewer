@@ -32,7 +32,7 @@
         spec:
           containers:
             - name: panoviewer
-              image: ???
+              image: sethitow/panoviewer
               ports:
                 - name: http
                   containerPort: 80
