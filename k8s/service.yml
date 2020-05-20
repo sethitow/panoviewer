@@ -1,0 +1,39 @@
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: panoviewer
+      namespace: panoviewer
+    spec:
+      ports:
+        - port: 8000
+          targetPort: http
+          protocol: TCP
+          name: http
+      selector:
+        app: panoviewer
+    ---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: panoviewer
+      namespace: panoviewer
+      labels:
+        app: panoviewer
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: panoviewer
+      template:
+        metadata:
+          labels:
+            app: panoviewer
+        spec:
+          containers:
+            - name: panoviewer
+              image: ???
+              ports:
+                - name: http
+                  containerPort: 80
+                  protocol: TCP
